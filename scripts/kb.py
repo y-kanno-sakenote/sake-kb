@@ -34,7 +34,7 @@ def cite(r):
             return f"{r['title']} 書誌未登録 {r['part']}"
         pg = f" p.{r['page_start'] + r['pdf_page'] - 1}" if r["page_ok"] and r["pdf_page"] else ""
         return f"{r['title']} {r['vol']}({r['no']}) {r['year']} pp.{r['page_start']}-{r['page_end']}{pg} {r['authors'] or '著者不明'}「{r['doc_title']}」"
-    return f"{r['title']} / {r['part']} / p.{r['pdf_page']}"
+    return f"{r['title']} / {r['part']}" + (f" / p.{r['pdf_page']}" if r["pdf_page"] else "")   # 頁不明（前付・欠落）は見開きだけで引用
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser(); ap.add_argument("query"); ap.add_argument("-k", type=int, default=5)

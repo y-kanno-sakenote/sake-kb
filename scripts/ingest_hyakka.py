@@ -66,6 +66,7 @@ def build(book="hakko", db_path=kbdb.DB):
             lines.append(f"【{x['prefecture']}｜{x['section']}】{x['type']}: {x['name']} — {x['fact']}{tag}")
         text = "\n".join(lines)
         page_no = int(pp) if pp is not None else 0
+        if f.startswith("1.はじめに") and sp <= 6: page_no = 0   # 前付（ローマ数字頁）は本文頁と衝突するので頁なし扱い
         con.execute("INSERT OR REPLACE INTO pages VALUES(?,?,?,?)", (SRC, part, page_no, text))
         for k, ch in enumerate(chunk_text(text)):
             con.execute("INSERT OR REPLACE INTO chunks(chunk_id,source_id,part,pdf_page,seq,text) VALUES(?,?,?,?,?,?)",
