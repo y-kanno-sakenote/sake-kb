@@ -42,6 +42,11 @@ if __name__ == "__main__":
     a = ap.parse_args()
     hits = search(a.query, a.k, a.source)
     if not hits: print("0件")
+    terms = [t for t in a.query.split() if t]
     for r in hits:
-        body = r["text"] if a.full else r["text"][:160].replace("\n", " ") + ("…" if len(r["text"]) > 160 else "")
+        if a.full: body = r["text"]
+        else:
+            lines = r["text"].split("\n")
+            hit_lines = [l for l in lines if any(t in l for t in terms)] if len(lines) > 1 else []
+            body = (" / ".join(hit_lines[:2])[:200] + ("…" if len(hit_lines) > 2 else "")) if hit_lines else r["text"][:160].replace("\n", " ") + ("…" if len(r["text"]) > 160 else "")
         print(f"[{cite(r)}] ({r['chunk_id']})\n  {body}\n")

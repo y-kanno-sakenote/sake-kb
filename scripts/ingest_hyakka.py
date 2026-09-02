@@ -40,6 +40,22 @@ def build(book="hakko", db_path=kbdb.DB):
     kbdb.clear_source(con, SRC); kbdb.upsert_source(con, s)
     groups = {}
     for d in rows: groups.setdefault((d["file"], int(d["spread"]), d["side"]), []).append(d)
+    # 分割PDFの境界頁が2ファイルに重複スキャンされていることがある（同じ印刷頁が別 file に存在）。
+    # 同じ printed_page が複数の file にあれば、事実件数の多い方を残し他を落とす（前付のローマ数字頁は printed_page が本文と衝突するので対象外）。
+    by_page = {}
+    for key, facts in groups.items():
+        pp = next((x["printed_page"] for x in facts if x.get("printed_page") is not None), None)
+        if pp is None or key[0].startswith("1.はじめに"): continue
+        by_page.setdefault(int(pp), []).append(key)
+    dropped = 0
+    for pp, keys in by_page.items():
+        files = {k[0] for k in keys}
+        if len(files) < 2: continue
+        keep = max(keys, key=lambda k: len(groups[k]))
+        for k in keys:
+            if k != keep and k[0] != keep[0]:
+                dropped += len(groups.pop(k)); print(f"  境界重複を除外: p.{pp} {k[0]} 見開き{k[1]:03d}{k[2]}（{keep[0]} を採用）")
+    if dropped: print(f"  重複除外 合計 {dropped} 件")
     n_chunks = 0
     for (f, sp, side), facts in sorted(groups.items()):
         part = f"{f}/見開き{sp:03d}{side}"
