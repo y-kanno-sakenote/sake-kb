@@ -3,9 +3,9 @@
 空白区切りはAND。3文字以上の語は FTS5(trigram, bm25)、2文字以下の語は LIKE で補う（trigramは3文字未満を引けない）。"""
 import argparse, os, sqlite3
 DB = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "sake_kb.sqlite")
-COLS = ["chunk_id", "source_id", "title", "part", "pdf_page", "text", "score", "doc_title", "authors", "year", "vol", "no", "page_start", "page_end", "url"]
+COLS = ["chunk_id", "source_id", "title", "part", "pdf_page", "text", "score", "doc_title", "authors", "year", "vol", "no", "page_start", "page_end", "url", "page_ok"]
 SEL = """c.chunk_id, c.source_id, s.title, c.part, c.pdf_page, c.text, {score},
-         d.title, d.authors, d.year, d.vol, d.no, d.page_start, d.page_end, d.url"""
+         d.title, d.authors, d.year, d.vol, d.no, d.page_start, d.page_end, d.url, d.page_ok"""
 
 def search(query: str, k=5, source=None, db=DB):
     terms = [t for t in query.split() if t]
@@ -32,7 +32,8 @@ def cite(r):
     if r["doc_title"]:
         if r["vol"] is None or r["year"] is None:   # 書誌欠け（上流 app_db に無い論文）
             return f"{r['title']} 書誌未登録 {r['part']}"
-        return f"{r['title']} {r['vol']}({r['no']}) {r['year']} pp.{r['page_start']}-{r['page_end']} {r['authors'] or '著者不明'}「{r['doc_title']}」"
+        pg = f" p.{r['page_start'] + r['pdf_page'] - 1}" if r["page_ok"] and r["pdf_page"] else ""
+        return f"{r['title']} {r['vol']}({r['no']}) {r['year']} pp.{r['page_start']}-{r['page_end']}{pg} {r['authors'] or '著者不明'}「{r['doc_title']}」"
     return f"{r['title']} / {r['part']} / p.{r['pdf_page']}"
 
 if __name__ == "__main__":

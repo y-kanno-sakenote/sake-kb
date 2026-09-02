@@ -8,26 +8,27 @@
 - `scripts/kbdb.py` … スキーマ（sources / docs / pages / chunks / chunks_fts）。ソース単位で差し替え可能
 - `scripts/extract_books.py` … Drive の自炊本PDF → 正規化 → SQLite（type=教科書/試験問題 の行だけ）
 - `scripts/export_jbsj_corpus.py` … jbsj の corpus.parquet＋書誌 → `data/jbsj_corpus.jsonl`（**../jbsj/.venv で実行**。parquet読みにpyarrowが要るため）
-- `scripts/ingest_papers.py` … その JSONL → SQLite に source_id=jbsj で投入（論文単位。pdf_page=0）
+- `scripts/ingest_papers.py` … 論文を **元PDFから頁単位で** 抽出して source_id=jbsj で投入（書誌と退避用本文は上の JSONL）。印刷頁＝開始ページ＋pdf_page−1。PDF頁数と書誌の頁範囲が一致した論文だけ印刷頁を確定（docs.page_ok=1）、それ以外は corpus 本文を頁なし（pdf_page=0）で投入
 - `scripts/kb.py` … 検索CLI。`python3 scripts/kb.py "酒母 温度" -k 5` で出典＋頁つきに返す
 - `data/manifest_books.json`, `data/jbsj_corpus.jsonl.manifest.json` … 取り込み元の md5・件数（機械が書く）
 
 依存: Python 標準ライブラリのみ ＋ poppler（`pdftotext`, `pdfinfo`）。
 
 ## 頁番号について
-`pdf_page` は PDF 内の通し頁（1始まり）で、本の印刷頁番号とは一致しない。引用は「source_id / part / pdf_page」で行う。
+本: `pdf_page` は PDF 内の通し頁（1始まり）で印刷頁とは一致しない。引用は「source_id / part / pdf_page」。
+論文: 引用は「誌名 巻(号) 年 pp.範囲 p.印刷頁 著者「題名」」。page_ok=0 の論文は頁なし。
 
 ## 現在の範囲
 | source_id | 内容 | 単位 | チャンク |
 |---|---|---|---|
 | akahon / aohon / nihonshu-no-moto / kanno-hyokashi / ginou-kentei | 自炊本5冊 | PDF頁 | 約2,000 |
-| jbsj | 日本醸造協会誌 本文 4,278本（1988〜） | 論文（頁区切りなし） | 約59,800 |
+| jbsj | 日本醸造協会誌 本文 4,278本（1988〜） | PDF頁（印刷頁つき引用、4,268本で確定） | 約68,400 |
 
-再生成: `../jbsj/.venv/bin/python scripts/export_jbsj_corpus.py && python3 scripts/extract_books.py && python3 scripts/ingest_papers.py`（export 約10秒・本 約2秒・論文 約45秒、DB約440MB）。旧誌（日本釀造協會雜誌 2,162本）・他誌論文は次段。
+再生成: `../jbsj/.venv/bin/python scripts/export_jbsj_corpus.py && python3 scripts/extract_books.py && python3 scripts/ingest_papers.py`（export 約10秒・本 約2秒・論文は元PDF 4,278本を8並列で約13分、DB約500MB）。旧誌（日本釀造協會雜誌 2,162本）・他誌論文は次段。
 
 ## 既知の癖（実測済み）
 - 自炊本5冊のみ OCRの固定誤字を補正: 疏→酛、膠→醪（本5冊には誤読以外の用例なし）。論文は正字を持ち疏水・膠原線維などがあるので補正しない。他の誤字は未補正
-- 『日本酒の基』は2段組のため `extract_mode=raw`（他4冊は default。sources.csv で指定）
+- 『日本酒の基』と醸造協会誌の論文は2段組のため `pdftotext -raw`（default だと左右の行が混ざり空行だらけになる）。他4冊は default
 - FTS5 trigram は2文字語を引けないので kb.py は2文字以下を LIKE で補う
 - 柱（章題ヘッダ）や数表のOCR断片チャンクが約3%混在。引用時は `--full` で前後を確認する
 - 論文の書誌欠け2件（100_112、84_183 (1)）は「書誌未登録」と表示。84_183 (1) は 84_183 の重複ダウンロード（上流 jbsj 側の問題）

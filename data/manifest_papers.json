@@ -1,0 +1,30 @@
+{
+ "generated_at": "2026-09-02T10:33:35",
+ "docs": 4278,
+ "paged_docs": 4268,
+ "chunks": 68418,
+ "chars": 42063507,
+ "reasons": {
+  "ok": 4268,
+  "no_bib": 2,
+  "page_mismatch:26!=23": 1,
+  "page_mismatch:12!=11": 1,
+  "page_mismatch:9!=8": 1,
+  "page_mismatch:4!=3": 1,
+  "page_mismatch:4!=1": 1,
+  "page_mismatch:9!=1": 1,
+  "page_mismatch:2!=1": 2
+ },
+ "failed": [
+  "100_112.pdf",
+  "106_293.pdf",
+  "109_228.pdf",
+  "111_664.pdf",
+  "116_333.pdf",
+  "117_695.pdf",
+  "118_287.pdf",
+  "84_183 (1).pdf",
+  "86_950.pdf",
+  "92_233.pdf"
+ ]
+}
