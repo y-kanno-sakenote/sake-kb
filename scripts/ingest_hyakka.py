@@ -8,13 +8,18 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import kbdb
 from extract_books import chunk_text
 
+BOOKS = {  # 引数 --book のキー → (source_id, 事実JSONLの置き場)
+    "hakko": ("hyakka-hakko", os.path.join(kbdb.ROOT, "data", "hyakka")),
+    "dentoshoku": ("hyakka-dentoshoku", os.path.join(kbdb.ROOT, "data", "hyakka_dentoshoku")),
+    "chomiryo": ("hyakka-chomiryo", os.path.join(kbdb.ROOT, "data", "hyakka_chomiryo")),
+}
 SRC = "hyakka-hakko"
-DIR = os.path.join(kbdb.ROOT, "data", "hyakka")
+DIR = BOOKS["hakko"][1]
 KEYS = ["file", "spread", "side", "printed_page", "prefecture", "section", "type", "name", "fact", "confidence"]
 
-def load():
+def load(d=None):
     rows = []
-    for p in sorted(glob.glob(os.path.join(DIR, "*.jsonl"))):
+    for p in sorted(glob.glob(os.path.join(d or DIR, "*.jsonl"))):
         for n, line in enumerate(open(p, encoding="utf-8"), 1):
             line = line.strip()
             if not line: continue
@@ -25,11 +30,12 @@ def load():
             rows.append(d)
     return rows
 
-def build(db_path=kbdb.DB):
+def build(book="hakko", db_path=kbdb.DB):
+    SRC, DIR = BOOKS[book]
     s = next((x for x in kbdb.read_sources() if x["source_id"] == SRC), None)
-    if not s: sys.exit("sources.csv に hyakka-hakko の行がない")
-    rows = load()
-    if not rows: sys.exit("data/hyakka/*.jsonl が空")
+    if not s: sys.exit(f"sources.csv に {SRC} の行がない")
+    rows = load(DIR)
+    if not rows: sys.exit(f"{DIR}/*.jsonl が空")
     con = kbdb.connect(db_path); t0 = time.time()
     kbdb.clear_source(con, SRC); kbdb.upsert_source(con, s)
     groups = {}
@@ -52,4 +58,6 @@ def build(db_path=kbdb.DB):
     print(f"{SRC:<18} facts={len(rows)} pages={len(groups)} chunks={n_chunks} elapsed={time.time()-t0:.1f}s")
 
 if __name__ == "__main__":
-    build()
+    import argparse
+    ap = argparse.ArgumentParser(); ap.add_argument("--book", choices=list(BOOKS), default="hakko")
+    build(ap.parse_args().book)

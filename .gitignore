@@ -6,3 +6,7 @@ data/*.jsonl
 data/*.sqlite-wal
 data/*.sqlite-shm
 data/hyakka/
+data/hyakka_img/
+work/
+data/hyakka_dentoshoku/
+data/hyakka_chomiryo/
