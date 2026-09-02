@@ -23,10 +23,11 @@
 | akahon / aohon / nihonshu-no-moto / kanno-hyokashi / ginou-kentei | 自炊本5冊 | PDF頁 | 約2,000 |
 | jbsj | 日本醸造協会誌 本文 4,278本（1988〜） | 論文（頁区切りなし） | 約59,800 |
 
-再生成: `../jbsj/.venv/bin/python scripts/export_jbsj_corpus.py && python3 scripts/extract_books.py && python3 scripts/ingest_papers.py`（合計30秒弱、DB約440MB）。旧誌（日本釀造協會雜誌 2,162本）・他誌論文は次段。
+再生成: `../jbsj/.venv/bin/python scripts/export_jbsj_corpus.py && python3 scripts/extract_books.py && python3 scripts/ingest_papers.py`（export 約10秒・本 約2秒・論文 約45秒、DB約440MB）。旧誌（日本釀造協會雜誌 2,162本）・他誌論文は次段。
 
 ## 既知の癖（実測済み）
-- OCRの固定誤字を正規化で補正: 疏→酛、膠→醪（コーパス内に誤読以外の用例なし）。他の誤字は未補正
+- 自炊本5冊のみ OCRの固定誤字を補正: 疏→酛、膠→醪（本5冊には誤読以外の用例なし）。論文は正字を持ち疏水・膠原線維などがあるので補正しない。他の誤字は未補正
 - 『日本酒の基』は2段組のため `extract_mode=raw`（他4冊は default。sources.csv で指定）
 - FTS5 trigram は2文字語を引けないので kb.py は2文字以下を LIKE で補う
 - 柱（章題ヘッダ）や数表のOCR断片チャンクが約3%混在。引用時は `--full` で前後を確認する
+- 論文の書誌欠け2件（100_112、84_183 (1)）は「書誌未登録」と表示。84_183 (1) は 84_183 の重複ダウンロード（上流 jbsj 側の問題）

@@ -30,7 +30,9 @@ def search(query: str, k=5, source=None, db=DB):
 def cite(r):
     """引用表記。論文は 誌名 巻(号) 年 頁範囲 著者「題名」、本は 題名 / 分割ファイル / PDF頁。"""
     if r["doc_title"]:
-        return f"{r['title']} {r['vol']}({r['no']}) {r['year']} pp.{r['page_start']}-{r['page_end']} {r['authors']}「{r['doc_title']}」"
+        if r["vol"] is None or r["year"] is None:   # 書誌欠け（上流 app_db に無い論文）
+            return f"{r['title']} 書誌未登録 {r['part']}"
+        return f"{r['title']} {r['vol']}({r['no']}) {r['year']} pp.{r['page_start']}-{r['page_end']} {r['authors'] or '著者不明'}「{r['doc_title']}」"
     return f"{r['title']} / {r['part']} / p.{r['pdf_page']}"
 
 if __name__ == "__main__":

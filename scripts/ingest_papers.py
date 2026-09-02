@@ -19,7 +19,7 @@ def build(db_path=kbdb.DB):
     with open(JSONL, encoding="utf-8") as f:
         for line in f:
             d = json.loads(line); part = os.path.splitext(d["file_name"])[0]
-            text = normalize_page(d["text"])
+            text = normalize_page(d["text"], ocr_fix=False)  # 論文は正字を持つのでOCR誤字補正を掛けない
             con.execute("INSERT INTO docs VALUES(?,?,?,?,?,?,?,?,?,?)",
                         (SRC, part, d["title"], d["authors"], d["year"], d["vol"], d["no"], d["page_start"], d["page_end"], d["url"]))
             con.execute("INSERT INTO pages VALUES(?,?,?,?)", (SRC, part, 0, text))

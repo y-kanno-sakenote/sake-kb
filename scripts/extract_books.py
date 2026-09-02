@@ -17,11 +17,13 @@ RE_SP_D_NA = re.compile(rf"(?<=[0-9])[^\S\n]+(?={NA})")
 RE_SP_NA_P = re.compile(rf"(?<={NA})[^\S\n]+(?=[,.):;])")   # 「が , その」型
 RE_SP_P_NA = re.compile(rf"(?<=[,(])[^\S\n]+(?={NA})")
 RE_PAGENO = re.compile(r"^[\s\d\-–—・.]*$")
-# OCRの固定誤字（JIS第2水準の醸造用字が別字に読まれる）。コーパス実測で誤読以外の用例が無いことを確認済み（疏水・膠質は0件）
+# OCRの固定誤字（JIS第2水準の醸造用字が別字に読まれる）。**自炊本5冊に限って**誤読以外の用例が無いことを実測済み（疏水・膠質は0件）。
+# 論文コーパスは正字の酛・醪を持ち、疏水・膠原線維などの正当な用例があるので適用しない（ocr_fix=False）
 OCR_FIX = str.maketrans({"疏": "酛", "膠": "醪"})
 
-def normalize_line(s: str) -> str:
-    s = s.strip().translate(OCR_FIX)
+def normalize_line(s: str, ocr_fix=True) -> str:
+    s = s.strip()
+    if ocr_fix: s = s.translate(OCR_FIX)
     s = RE_SP_NA_NA.sub("", s)
     s = RE_SP_NA_NA.sub("", s)  # 3連続以上の隙間を潰すため2回
     s = RE_SP_NA_D.sub("", s)
@@ -30,11 +32,11 @@ def normalize_line(s: str) -> str:
     s = RE_SP_P_NA.sub("", s)
     return s
 
-def normalize_page(raw: str) -> str:
+def normalize_page(raw: str, ocr_fix=True) -> str:
     """行を段落に畳む。日本語同士の改行は連結、空行は段落区切り。数字だけの行（頁番号）は捨てる。"""
     paras, buf = [], ""
     for line in raw.split("\n"):
-        ln = normalize_line(line)
+        ln = normalize_line(line, ocr_fix)
         if not ln or RE_PAGENO.match(ln):
             if buf: paras.append(buf); buf = ""
             continue
