@@ -1,22 +1,22 @@
 #!/usr/bin/env python3
-"""自炊本PDF → 正規化テキスト → SQLite（pages / chunks / FTS5）。標準ライブラリ＋poppler のみ。"""
-import csv, glob, hashlib, json, os, re, sqlite3, subprocess, sys, time
+"""自炊本PDF → 正規化テキスト → SQLite（pages / chunks / FTS5）。標準ライブラリ＋poppler のみ。
+sources.csv の type=教科書/試験問題 の行だけを対象にし、ソース単位で差し替える。"""
+import glob, hashlib, json, os, re, subprocess, sys, time
 from datetime import datetime
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import kbdb
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DRIVE = "/Users/ymacmini/Library/CloudStorage/GoogleDrive-y.kanno@sakenote.net/マイドライブ/サケノテ"
-DB = os.path.join(ROOT, "data", "sake_kb.sqlite")
-MANIFEST = os.path.join(ROOT, "data", "manifest.json")
+MANIFEST = os.path.join(kbdb.ROOT, "data", "manifest_books.json")
 CHUNK_MAX = 800
+BOOK_TYPES = {"教科書", "試験問題"}
 
 NA = r"[^\x00-\x7f]"            # 非ASCII（日本語）
 RE_SP_NA_NA = re.compile(rf"(?<={NA})[^\S\n]+(?={NA})")
 RE_SP_NA_D = re.compile(rf"(?<={NA})[^\S\n]+(?=[0-9])")
 RE_SP_D_NA = re.compile(rf"(?<=[0-9])[^\S\n]+(?={NA})")
-RE_PAGENO = re.compile(r"^[\s\d\-–—・.]*$")
 RE_SP_NA_P = re.compile(rf"(?<={NA})[^\S\n]+(?=[,.):;])")   # 「が , その」型
 RE_SP_P_NA = re.compile(rf"(?<=[,(])[^\S\n]+(?={NA})")
-
+RE_PAGENO = re.compile(r"^[\s\d\-–—・.]*$")
 # OCRの固定誤字（JIS第2水準の醸造用字が別字に読まれる）。コーパス実測で誤読以外の用例が無いことを確認済み（疏水・膠質は0件）
 OCR_FIX = str.maketrans({"疏": "酛", "膠": "醪"})
 
@@ -76,28 +76,18 @@ def md5(path):
     return h.hexdigest()
 
 def resolve_files(drive_path: str):
-    pat = os.path.join(DRIVE, drive_path)
-    files = sorted(glob.glob(pat))
+    files = sorted(glob.glob(os.path.join(kbdb.DRIVE, drive_path)))
     # 原本/ と結合版 日本酒の基.pdf は除外
     return [f for f in files if "/原本/" not in f and os.path.basename(f) != "日本酒の基.pdf"]
 
-def build(db_path=DB):
-    if os.path.exists(db_path): os.remove(db_path)
-    con = sqlite3.connect(db_path)
-    con.executescript("""
-    CREATE TABLE sources(source_id TEXT PRIMARY KEY, title, publisher, year, edition, type, tier, drive_path, note, extract_mode);
-    CREATE TABLE pages(source_id, part, pdf_page INTEGER, text, PRIMARY KEY(source_id, part, pdf_page));
-    CREATE TABLE chunks(chunk_id TEXT PRIMARY KEY, source_id, part, pdf_page INTEGER, seq INTEGER, text);
-    CREATE VIRTUAL TABLE chunks_fts USING fts5(text, chunk_id UNINDEXED, tokenize='trigram');
-    """)
+def build(db_path=kbdb.DB):
+    con = kbdb.connect(db_path)
     manifest = {"generated_at": datetime.now().isoformat(timespec="seconds"), "chunk_max": CHUNK_MAX, "files": []}
-    with open(os.path.join(ROOT, "sources.csv"), encoding="utf-8") as f:
-        srcs = list(csv.DictReader(f))
     t0 = time.time()
-    for s in srcs:
-        con.execute("INSERT INTO sources VALUES(?,?,?,?,?,?,?,?,?,?)", [s[k] for k in s])
+    for s in [x for x in kbdb.read_sources() if x["type"] in BOOK_TYPES]:
         files = resolve_files(s["drive_path"])
         if not files: print(f"!! {s['source_id']}: ファイルなし {s['drive_path']}", file=sys.stderr); continue
+        kbdb.clear_source(con, s["source_id"]); kbdb.upsert_source(con, s)
         n_chunks = n_chars = n_pages = 0
         for path in files:
             part = os.path.splitext(os.path.basename(path))[0]
@@ -109,15 +99,16 @@ def build(db_path=DB):
                 con.execute("INSERT INTO pages VALUES(?,?,?,?)", (s["source_id"], part, i, text))
                 for k, ch in enumerate(chunk_text(text)):
                     cid = f"{s['source_id']}/{part}/p{i:04d}/{k}"
-                    con.execute("INSERT INTO chunks VALUES(?,?,?,?,?,?)", (cid, s["source_id"], part, i, k, ch))
-                    con.execute("INSERT INTO chunks_fts(text, chunk_id) VALUES(?,?)", (ch, cid))
+                    con.execute("INSERT INTO chunks(chunk_id,source_id,part,pdf_page,seq,text) VALUES(?,?,?,?,?,?)",
+                                (cid, s["source_id"], part, i, k, ch))
                     n_chunks += 1
                 fchars += len(text)
             n_pages += len(pages); n_chars += fchars
-            manifest["files"].append({"source_id": s["source_id"], "part": part, "path": os.path.relpath(path, DRIVE),
+            manifest["files"].append({"source_id": s["source_id"], "part": part, "path": os.path.relpath(path, kbdb.DRIVE),
                                       "md5": md5(path), "pages": len(pages), "chars": fchars})
+        con.commit()
         print(f"{s['source_id']:<18} files={len(files):>2} pages={n_pages:>4} chars={n_chars:>9,} chunks={n_chunks:>5}")
-    con.commit(); con.close()
+    con.close()
     manifest["elapsed_sec"] = round(time.time() - t0, 1)
     json.dump(manifest, open(MANIFEST, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     print(f"done {manifest['elapsed_sec']}s -> {db_path}")

@@ -2,3 +2,6 @@ data/*.sqlite
 data/*.sqlite-journal
 __pycache__/
 .DS_Store
+data/*.jsonl
+data/*.sqlite-wal
+data/*.sqlite-shm
