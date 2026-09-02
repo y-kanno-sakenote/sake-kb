@@ -8,7 +8,7 @@ import kbdb
 
 MANIFEST = os.path.join(kbdb.ROOT, "data", "manifest_books.json")
 CHUNK_MAX = 800
-BOOK_TYPES = {"教科書", "試験問題", "行政資料"}   # PDF を頁単位で抽出する種別（学会誌は ingest_papers.py）
+BOOK_TYPES = {"教科書", "試験問題", "行政資料", "統計表"}   # PDF を頁単位で抽出する種別（学会誌は ingest_papers.py）
 
 NA = r"[^\x00-\x7f]"            # 非ASCII（日本語）
 RE_SP_NA_NA = re.compile(rf"(?<={NA})[^\S\n]+(?={NA})")
@@ -64,7 +64,10 @@ def chunk_text(text: str, limit=CHUNK_MAX):
     return [c for c in out if c.strip()]
 
 def pdf_pages(path: str, mode="default"):
-    """mode=raw はコンテンツ順（2段組の本で左右の行が混ざるのを防ぐ。単段の本では default の方が安定）"""
+    """mode=raw はコンテンツ順（2段組の本で左右の行が混ざるのを防ぐ。単段の本では default の方が安定）。
+    .txt はそのまま1頁として扱う（Excel から書き出した数表など）"""
+    if path.lower().endswith(".txt"):
+        return [open(path, encoding="utf-8").read()]
     args = ["-raw"] if mode == "raw" else []
     txt = subprocess.run(["pdftotext", "-enc", "UTF-8", *args, path, "-"], capture_output=True, text=True, check=True).stdout
     pages = txt.split("\f")

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-02T11:38:55",
+ "generated_at": "2026-09-02T12:20:09",
  "chunk_max": 800,
  "files": [
   {
@@ -425,7 +425,247 @@
    "md5": "e7cf7f55320553eb872da1b58ee37f19",
    "pages": 153,
    "chars": 138215
+  },
+  {
+   "source_id": "nta-gaikyo-r07",
+   "part": "all",
+   "path": "読み物/日本酒資料/国税庁_最新/酒類製造業及び酒類卸売業の概況_令和7年アンケート/all.pdf",
+   "md5": "d9cd7e206697e7308f445167d5f635b1",
+   "pages": 69,
+   "chars": 35485
+  },
+  {
+   "source_id": "nta-gaikyo-r07",
+   "part": "seigo",
+   "path": "読み物/日本酒資料/国税庁_最新/酒類製造業及び酒類卸売業の概況_令和7年アンケート/seigo.pdf",
+   "md5": "1e08655d4d5db9f47984f0f7955a47a7",
+   "pages": 6,
+   "chars": 456
+  },
+  {
+   "source_id": "nta-shiori-r08-excel",
+   "part": "01_01",
+   "path": "読み物/日本酒資料/国税庁_最新/酒のしおり_令和8年7月/excel_text/01_01.txt",
+   "md5": "e95967b233b4bc47bad0f49a9e0495e5",
+   "pages": 1,
+   "chars": 3636
+  },
+  {
+   "source_id": "nta-shiori-r08-excel",
+   "part": "02_01",
+   "path": "読み物/日本酒資料/国税庁_最新/酒のしおり_令和8年7月/excel_text/02_01.txt",
+   "md5": "3fe1df8ba6780e8aaa49899ffe1e35b5",
+   "pages": 1,
+   "chars": 2428
+  },
+  {
+   "source_id": "nta-shiori-r08-excel",
+   "part": "06-1_01",
+   "path": "読み物/日本酒資料/国税庁_最新/酒のしおり_令和8年7月/excel_text/06-1_01.txt",
+   "md5": "31b6fe0f634bb260347aded6bf7b9033",
+   "pages": 1,
+   "chars": 3735
+  },
+  {
+   "source_id": "nta-shiori-r08-excel",
+   "part": "06-2_01",
+   "path": "読み物/日本酒資料/国税庁_最新/酒のしおり_令和8年7月/excel_text/06-2_01.txt",
+   "md5": "3786761643cd78b512656b384f3174e8",
+   "pages": 1,
+   "chars": 1451
+  },
+  {
+   "source_id": "nta-shiori-r08-excel",
+   "part": "06_01",
+   "path": "読み物/日本酒資料/国税庁_最新/酒のしおり_令和8年7月/excel_text/06_01.txt",
+   "md5": "0577c901ce94584b12f1c884b86e73ac",
+   "pages": 1,
+   "chars": 799
+  },
+  {
+   "source_id": "nta-shiori-r08-excel",
+   "part": "07-1_01",
+   "path": "読み物/日本酒資料/国税庁_最新/酒のしおり_令和8年7月/excel_text/07-1_01.txt",
+   "md5": "0c7cf93fa1a5af630e5f6e2c138e2b62",
+   "pages": 1,
+   "chars": 3711
+  },
+  {
+   "source_id": "nta-shiori-r08-excel",
+   "part": "07_01",
+   "path": "読み物/日本酒資料/国税庁_最新/酒のしおり_令和8年7月/excel_text/07_01.txt",
+   "md5": "e3ec2cd3b4d6e225f1bfff46b072cf17",
+   "pages": 1,
+   "chars": 1359
+  },
+  {
+   "source_id": "nta-shiori-r08-excel",
+   "part": "08-1_01",
+   "path": "読み物/日本酒資料/国税庁_最新/酒のしおり_令和8年7月/excel_text/08-1_01.txt",
+   "md5": "2d35059b52fdc955bb307d02c2194c78",
+   "pages": 1,
+   "chars": 3636
+  },
+  {
+   "source_id": "nta-shiori-r08-excel",
+   "part": "08-2_01",
+   "path": "読み物/日本酒資料/国税庁_最新/酒のしおり_令和8年7月/excel_text/08-2_01.txt",
+   "md5": "b5bde981bcb3518257ffb534930ed05f",
+   "pages": 1,
+   "chars": 815
+  },
+  {
+   "source_id": "nta-shiori-r08-excel",
+   "part": "08_01",
+   "path": "読み物/日本酒資料/国税庁_最新/酒のしおり_令和8年7月/excel_text/08_01.txt",
+   "md5": "0cb4bd51d2ddaac42939c3f3f0fe765e",
+   "pages": 1,
+   "chars": 1337
+  },
+  {
+   "source_id": "nta-shiori-r08-excel",
+   "part": "09-1_01",
+   "path": "読み物/日本酒資料/国税庁_最新/酒のしおり_令和8年7月/excel_text/09-1_01.txt",
+   "md5": "a922c698492c1e189aac966ad17a9a97",
+   "pages": 1,
+   "chars": 3000
+  },
+  {
+   "source_id": "nta-shiori-r08-excel",
+   "part": "09_01",
+   "path": "読み物/日本酒資料/国税庁_最新/酒のしおり_令和8年7月/excel_text/09_01.txt",
+   "md5": "d14474a1a67a47e7d655ab3304151716",
+   "pages": 1,
+   "chars": 1233
+  },
+  {
+   "source_id": "nta-shiori-r08-excel",
+   "part": "10-1_01",
+   "path": "読み物/日本酒資料/国税庁_最新/酒のしおり_令和8年7月/excel_text/10-1_01.txt",
+   "md5": "25b6688d153316f1f7fdff32741f6751",
+   "pages": 1,
+   "chars": 4061
+  },
+  {
+   "source_id": "nta-shiori-r08-excel",
+   "part": "10_01",
+   "path": "読み物/日本酒資料/国税庁_最新/酒のしおり_令和8年7月/excel_text/10_01.txt",
+   "md5": "931b2b3cbc7539b88035f0d9fbd1f3d4",
+   "pages": 1,
+   "chars": 1566
+  },
+  {
+   "source_id": "nta-shiori-r08-excel",
+   "part": "11-1_01",
+   "path": "読み物/日本酒資料/国税庁_最新/酒のしおり_令和8年7月/excel_text/11-1_01.txt",
+   "md5": "cc3604f825d0dc3f2ec12a353889123f",
+   "pages": 1,
+   "chars": 1527
+  },
+  {
+   "source_id": "nta-shiori-r08-excel",
+   "part": "11_01",
+   "path": "読み物/日本酒資料/国税庁_最新/酒のしおり_令和8年7月/excel_text/11_01.txt",
+   "md5": "5471f59e9bcceb0a34e21d27ae5866e9",
+   "pages": 1,
+   "chars": 3965
+  },
+  {
+   "source_id": "nta-shiori-r08-excel",
+   "part": "12-1_01",
+   "path": "読み物/日本酒資料/国税庁_最新/酒のしおり_令和8年7月/excel_text/12-1_01.txt",
+   "md5": "5ca8b896bf07f9c1a2aed943d9533922",
+   "pages": 1,
+   "chars": 1843
+  },
+  {
+   "source_id": "nta-shiori-r08-excel",
+   "part": "12_01",
+   "path": "読み物/日本酒資料/国税庁_最新/酒のしおり_令和8年7月/excel_text/12_01.txt",
+   "md5": "7fe9c53dc09277512bac65bb4614087f",
+   "pages": 1,
+   "chars": 3675
+  },
+  {
+   "source_id": "nta-shiori-r08-excel",
+   "part": "13_01",
+   "path": "読み物/日本酒資料/国税庁_最新/酒のしおり_令和8年7月/excel_text/13_01.txt",
+   "md5": "00798d6ebc5af9f52ed4d04c9929412c",
+   "pages": 1,
+   "chars": 7386
+  },
+  {
+   "source_id": "nta-shiori-r08-excel",
+   "part": "13_02",
+   "path": "読み物/日本酒資料/国税庁_最新/酒のしおり_令和8年7月/excel_text/13_02.txt",
+   "md5": "736cfd56978e8d5a77a2c40a122bc283",
+   "pages": 1,
+   "chars": 18585
+  },
+  {
+   "source_id": "nta-shiori-r08-excel",
+   "part": "13_03",
+   "path": "読み物/日本酒資料/国税庁_最新/酒のしおり_令和8年7月/excel_text/13_03.txt",
+   "md5": "1e45ad1c3140ee57b0bf0435665a1e7e",
+   "pages": 1,
+   "chars": 5713
+  },
+  {
+   "source_id": "nta-shiori-r08-excel",
+   "part": "14-1_01",
+   "path": "読み物/日本酒資料/国税庁_最新/酒のしおり_令和8年7月/excel_text/14-1_01.txt",
+   "md5": "f48346716aa82ddce61322231d2d8f58",
+   "pages": 1,
+   "chars": 1848
+  },
+  {
+   "source_id": "nta-shiori-r08-excel",
+   "part": "14-1_02",
+   "path": "読み物/日本酒資料/国税庁_最新/酒のしおり_令和8年7月/excel_text/14-1_02.txt",
+   "md5": "f15ffe78ccad4232bef6ecb81cfef497",
+   "pages": 1,
+   "chars": 2425
+  },
+  {
+   "source_id": "nta-shiori-r08-excel",
+   "part": "14-2_01",
+   "path": "読み物/日本酒資料/国税庁_最新/酒のしおり_令和8年7月/excel_text/14-2_01.txt",
+   "md5": "140a7edeea8b2d1a9fe578a5f23782c9",
+   "pages": 1,
+   "chars": 1849
+  },
+  {
+   "source_id": "nta-shiori-r08-excel",
+   "part": "14-2_02",
+   "path": "読み物/日本酒資料/国税庁_最新/酒のしおり_令和8年7月/excel_text/14-2_02.txt",
+   "md5": "568680e7add990c77b984c2bc7f4286d",
+   "pages": 1,
+   "chars": 2016
+  },
+  {
+   "source_id": "nta-shiori-r08-excel",
+   "part": "14-3_01",
+   "path": "読み物/日本酒資料/国税庁_最新/酒のしおり_令和8年7月/excel_text/14-3_01.txt",
+   "md5": "5d5169a861ea4f11fe9f43927410fbb7",
+   "pages": 1,
+   "chars": 1017
+  },
+  {
+   "source_id": "nta-shiori-r08-excel",
+   "part": "14_01",
+   "path": "読み物/日本酒資料/国税庁_最新/酒のしおり_令和8年7月/excel_text/14_01.txt",
+   "md5": "6c25a504259136ef2587e7c5e1757d5f",
+   "pages": 1,
+   "chars": 7945
+  },
+  {
+   "source_id": "nta-shiori-r08-excel",
+   "part": "15_01",
+   "path": "読み物/日本酒資料/国税庁_最新/酒のしおり_令和8年7月/excel_text/15_01.txt",
+   "md5": "76f9173c4be187ac6527fabdfd99a170",
+   "pages": 1,
+   "chars": 4134
   }
  ],
- "elapsed_sec": 7.7
+ "elapsed_sec": 6.1
 }
