@@ -5,3 +5,4 @@ __pycache__/
 data/*.jsonl
 data/*.sqlite-wal
 data/*.sqlite-shm
+data/hyakka/
