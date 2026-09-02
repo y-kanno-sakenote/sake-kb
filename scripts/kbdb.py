@@ -29,6 +29,9 @@ def clear_source(con, source_id):
         con.execute(f"DELETE FROM {t} WHERE source_id=?", (source_id,))
 
 def upsert_source(con, s: dict):
+    """信頼階層の門番。T1/T2 以外（T3=二次資料、空欄）は取り込みを拒否する。"""
+    if s.get("tier") not in ("T1", "T2"):
+        raise ValueError(f"{s.get('source_id')}: tier={s.get('tier')!r} は取り込み不可（T1/T2のみ。ADR-018）")
     cols = ["source_id", "title", "publisher", "year", "edition", "type", "tier", "drive_path", "note", "extract_mode"]
     con.execute(f"INSERT OR REPLACE INTO sources({','.join(cols)}) VALUES({','.join('?'*len(cols))})", [s.get(c) for c in cols])
 
