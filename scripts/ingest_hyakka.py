@@ -25,7 +25,7 @@ def load(d=None):
             if not line: continue
             try: d = json.loads(line)
             except json.JSONDecodeError as e: print(f"!! {os.path.basename(p)}:{n} JSON不正 {e}", file=sys.stderr); continue
-            miss = [k for k in KEYS if k not in d]
+            miss = [k for k in KEYS if k not in d and k != "confidence"]   # confidence は任意（欠けたバッチがある）
             if miss: print(f"!! {os.path.basename(p)}:{n} 欠けキー {miss}", file=sys.stderr); continue
             rows.append(d)
     return rows
