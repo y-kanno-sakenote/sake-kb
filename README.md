@@ -8,6 +8,7 @@
 - `scripts/kbdb.py` … スキーマ（sources / docs / pages / chunks / chunks_fts）。ソース単位で差し替え可能
 - `scripts/extract_books.py` … Drive の自炊本PDF → 正規化 → SQLite（type=教科書/試験問題 の行だけ）
 - `scripts/export_jbsj_corpus.py` … jbsj の corpus.parquet＋書誌 → `data/jbsj_corpus.jsonl`（**../jbsj/.venv で実行**。parquet読みにpyarrowが要るため）
+- `scripts/ingest_hyakka.py` … `data/hyakka/*.jsonl`（Claude Sonnet のビジョンで抽出した頁つき事実。git外・非公開）→ source_id=hyakka-hakko
 - `scripts/ingest_papers.py` … 論文を **元PDFから頁単位で** 抽出して source_id=jbsj で投入（書誌と退避用本文は上の JSONL）。印刷頁＝開始ページ＋pdf_page−1。PDF頁数と書誌の頁範囲が一致した論文だけ印刷頁を確定（docs.page_ok=1）、それ以外は corpus 本文を頁なし（pdf_page=0）で投入
 - `scripts/kb.py` … 検索CLI。`python3 scripts/kb.py "酒母 温度" -k 5` で出典＋頁つきに返す
 - `data/manifest_books.json`, `data/jbsj_corpus.jsonl.manifest.json` … 取り込み元の md5・件数（機械が書く）
@@ -23,6 +24,8 @@
 |---|---|---|---|
 | akahon / aohon / nihonshu-no-moto / kanno-hyokashi / ginou-kentei | 自炊本5冊 | PDF頁 | 約2,000 |
 | jbsj | 日本醸造協会誌 本文 4,278本（1988〜） | PDF頁（印刷頁つき引用、4,268本で確定） | 約68,400 |
+| nta-* | 国税庁資料6件（調査研究2005・アクションプラン2000・経営改善2004・こうじ菌2021・概況R7・酒のしおりR8 Excel数表） | PDF頁／Excelシート | 約1,250 |
+| hyakka-hakko | 47都道府県・発酵文化百科（2021・丸善出版）の**頁つき構造化事実**4,987件（逐語ではない） | 書籍頁 | 約470 |
 
 再生成: `../jbsj/.venv/bin/python scripts/export_jbsj_corpus.py && python3 scripts/extract_books.py && python3 scripts/ingest_papers.py`（export 約10秒・本 約2秒・論文は元PDF 4,278本を8並列で約13分、DB約720MB）。旧誌（日本釀造協會雜誌 2,162本）・他誌論文は次段。
 
@@ -32,3 +35,5 @@
 - FTS5 trigram は2文字語を引けないので kb.py は2文字以下を LIKE で補う
 - 柱（章題ヘッダ）や数表のOCR断片チャンクが約3%混在。引用時は `--full` で前後を確認する
 - 論文の書誌欠け2件（100_112、84_183 (1)）は「書誌未登録」と表示。84_183 (1) は 84_183 の重複ダウンロード（上流 jbsj 側の問題）
+- 百科3種はスキャンが90°回転しているので正立させてから左右頁に分割（scratchpad の render_hyakka.py 相当）。逐語転記は著作権上しない。事実は Sonnet で抽出（Haiku は数値・県名の誤りが多く不採用）
+- 酒のしおりの PDF（令和3〜8年版）は埋め込みフォントの ToUnicode 欠落で全頁文字化け。数表は Excel から取る
