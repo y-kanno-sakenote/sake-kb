@@ -62,7 +62,7 @@ def build(book="hakko", db_path=kbdb.DB):
         pp = next((x["printed_page"] for x in facts if x.get("printed_page") is not None), None)
         lines = []
         for x in facts:
-            tag = "" if x.get("confidence") == "high" else f"〔確度{x.get('confidence')}〕"
+            tag = f"〔確度{x.get('confidence')}〕" if x.get("confidence") in ("medium", "low") else ""
             lines.append(f"【{x['prefecture']}｜{x['section']}】{x['type']}: {x['name']} — {x['fact']}{tag}")
         text = "\n".join(lines)
         page_no = int(pp) if pp is not None else 0
