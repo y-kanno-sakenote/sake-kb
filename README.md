@@ -24,7 +24,7 @@
 | akahon / aohon / nihonshu-no-moto / kanno-hyokashi / ginou-kentei | 自炊本5冊 | PDF頁 | 約2,000 |
 | jbsj | 日本醸造協会誌 本文 4,278本（1988〜） | PDF頁（印刷頁つき引用、4,268本で確定） | 約68,400 |
 
-再生成: `../jbsj/.venv/bin/python scripts/export_jbsj_corpus.py && python3 scripts/extract_books.py && python3 scripts/ingest_papers.py`（export 約10秒・本 約2秒・論文は元PDF 4,278本を8並列で約13分、DB約500MB）。旧誌（日本釀造協會雜誌 2,162本）・他誌論文は次段。
+再生成: `../jbsj/.venv/bin/python scripts/export_jbsj_corpus.py && python3 scripts/extract_books.py && python3 scripts/ingest_papers.py`（export 約10秒・本 約2秒・論文は元PDF 4,278本を8並列で約13分、DB約720MB）。旧誌（日本釀造協會雜誌 2,162本）・他誌論文は次段。
 
 ## 既知の癖（実測済み）
 - 自炊本5冊のみ OCRの固定誤字を補正: 疏→酛、膠→醪（本5冊には誤読以外の用例なし）。論文は正字を持ち疏水・膠原線維などがあるので補正しない。他の誤字は未補正
