@@ -17,8 +17,11 @@ RE_PAGENO = re.compile(r"^[\s\d\-–—・.]*$")
 RE_SP_NA_P = re.compile(rf"(?<={NA})[^\S\n]+(?=[,.):;])")   # 「が , その」型
 RE_SP_P_NA = re.compile(rf"(?<=[,(])[^\S\n]+(?={NA})")
 
+# OCRの固定誤字（JIS第2水準の醸造用字が別字に読まれる）。コーパス実測で誤読以外の用例が無いことを確認済み（疏水・膠質は0件）
+OCR_FIX = str.maketrans({"疏": "酛", "膠": "醪"})
+
 def normalize_line(s: str) -> str:
-    s = s.strip()
+    s = s.strip().translate(OCR_FIX)
     s = RE_SP_NA_NA.sub("", s)
     s = RE_SP_NA_NA.sub("", s)  # 3連続以上の隙間を潰すため2回
     s = RE_SP_NA_D.sub("", s)
@@ -58,8 +61,10 @@ def chunk_text(text: str, limit=CHUNK_MAX):
     if cur: out.append(cur)
     return [c for c in out if c.strip()]
 
-def pdf_pages(path: str):
-    txt = subprocess.run(["pdftotext", "-enc", "UTF-8", path, "-"], capture_output=True, text=True, check=True).stdout
+def pdf_pages(path: str, mode="default"):
+    """mode=raw はコンテンツ順（2段組の本で左右の行が混ざるのを防ぐ。単段の本では default の方が安定）"""
+    args = ["-raw"] if mode == "raw" else []
+    txt = subprocess.run(["pdftotext", "-enc", "UTF-8", *args, path, "-"], capture_output=True, text=True, check=True).stdout
     pages = txt.split("\f")
     if pages and not pages[-1].strip(): pages = pages[:-1]
     return pages
@@ -80,7 +85,7 @@ def build(db_path=DB):
     if os.path.exists(db_path): os.remove(db_path)
     con = sqlite3.connect(db_path)
     con.executescript("""
-    CREATE TABLE sources(source_id TEXT PRIMARY KEY, title, publisher, year, edition, type, tier, drive_path, note);
+    CREATE TABLE sources(source_id TEXT PRIMARY KEY, title, publisher, year, edition, type, tier, drive_path, note, extract_mode);
     CREATE TABLE pages(source_id, part, pdf_page INTEGER, text, PRIMARY KEY(source_id, part, pdf_page));
     CREATE TABLE chunks(chunk_id TEXT PRIMARY KEY, source_id, part, pdf_page INTEGER, seq INTEGER, text);
     CREATE VIRTUAL TABLE chunks_fts USING fts5(text, chunk_id UNINDEXED, tokenize='trigram');
@@ -90,13 +95,13 @@ def build(db_path=DB):
         srcs = list(csv.DictReader(f))
     t0 = time.time()
     for s in srcs:
-        con.execute("INSERT INTO sources VALUES(?,?,?,?,?,?,?,?,?)", [s[k] for k in s])
+        con.execute("INSERT INTO sources VALUES(?,?,?,?,?,?,?,?,?,?)", [s[k] for k in s])
         files = resolve_files(s["drive_path"])
         if not files: print(f"!! {s['source_id']}: ファイルなし {s['drive_path']}", file=sys.stderr); continue
         n_chunks = n_chars = n_pages = 0
         for path in files:
             part = os.path.splitext(os.path.basename(path))[0]
-            pages = pdf_pages(path)
+            pages = pdf_pages(path, s.get("extract_mode") or "default")
             fchars = 0
             for i, raw in enumerate(pages, start=1):
                 text = normalize_page(raw)

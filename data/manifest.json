@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-02T09:36:52",
+ "generated_at": "2026-09-02T09:41:54",
  "chunk_max": 800,
  "files": [
   {
@@ -24,7 +24,7 @@
    "path": "読み物/日本酒資料/自炊本/日本酒の基/0.はじめに.pdf",
    "md5": "9d971183877218aa09009437088ace2b",
    "pages": 22,
-   "chars": 19827
+   "chars": 19398
   },
   {
    "source_id": "nihonshu-no-moto",
@@ -32,7 +32,7 @@
    "path": "読み物/日本酒資料/自炊本/日本酒の基/1.原料.pdf",
    "md5": "aa14db4472315fcb7660a48423eb8bf3",
    "pages": 36,
-   "chars": 34288
+   "chars": 33572
   },
   {
    "source_id": "nihonshu-no-moto",
@@ -40,7 +40,7 @@
    "path": "読み物/日本酒資料/自炊本/日本酒の基/2.製法.pdf",
    "md5": "104648b5d5a4cd43bfdf854179c1fec4",
    "pages": 46,
-   "chars": 32892
+   "chars": 31555
   },
   {
    "source_id": "nihonshu-no-moto",
@@ -48,7 +48,7 @@
    "path": "読み物/日本酒資料/自炊本/日本酒の基/3.表示.pdf",
    "md5": "5f71501d948ad1de422569441e381892",
    "pages": 20,
-   "chars": 18372
+   "chars": 17811
   },
   {
    "source_id": "nihonshu-no-moto",
@@ -56,7 +56,7 @@
    "path": "読み物/日本酒資料/自炊本/日本酒の基/4.歴史.pdf",
    "md5": "91b3ffbcabe10159a2c98a8c5af50844",
    "pages": 28,
-   "chars": 32240
+   "chars": 31185
   },
   {
    "source_id": "nihonshu-no-moto",
@@ -64,7 +64,7 @@
    "path": "読み物/日本酒資料/自炊本/日本酒の基/5.香味特性別分類.pdf",
    "md5": "bec2e22e9e7a4071ad12e30d32bc7834",
    "pages": 6,
-   "chars": 4934
+   "chars": 4776
   },
   {
    "source_id": "nihonshu-no-moto",
@@ -72,7 +72,7 @@
    "path": "読み物/日本酒資料/自炊本/日本酒の基/6.テイスティング.pdf",
    "md5": "7e3ddc7bd30585fdff1fb9fdff6200d5",
    "pages": 28,
-   "chars": 23971
+   "chars": 22823
   },
   {
    "source_id": "nihonshu-no-moto",
@@ -80,7 +80,7 @@
    "path": "読み物/日本酒資料/自炊本/日本酒の基/7.サービス.pdf",
    "md5": "ace47ed0368d5d3ab79d6fb318ad2c4d",
    "pages": 62,
-   "chars": 57703
+   "chars": 55274
   },
   {
    "source_id": "nihonshu-no-moto",
@@ -88,7 +88,7 @@
    "path": "読み物/日本酒資料/自炊本/日本酒の基/8.セールスプロモーション.pdf",
    "md5": "10b8836937b417cbaed537ad74287558",
    "pages": 52,
-   "chars": 53126
+   "chars": 51340
   },
   {
    "source_id": "kanno-hyokashi",
