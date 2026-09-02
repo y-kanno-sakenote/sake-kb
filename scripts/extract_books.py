@@ -102,7 +102,11 @@ def build(db_path=kbdb.DB):
                 text = normalize_page(raw)
                 if not text.strip(): continue
                 con.execute("INSERT INTO pages VALUES(?,?,?,?)", (s["source_id"], part, i, text))
-                for k, ch in enumerate(chunk_text(text)):
+                chunks = chunk_text(text)
+                if path.lower().endswith(".txt") and len(chunks) > 1:   # 数表: 表題行を全チャンクに付けて「県名×品目」が同じチャンクで引けるようにする
+                    head = text.split("\n", 1)[0]
+                    chunks = [c if c.startswith(head) else head + "\n" + c for c in chunks]
+                for k, ch in enumerate(chunks):
                     cid = f"{s['source_id']}/{part}/p{i:04d}/{k}"
                     con.execute("INSERT INTO chunks(chunk_id,source_id,part,pdf_page,seq,text) VALUES(?,?,?,?,?,?)",
                                 (cid, s["source_id"], part, i, k, ch))
