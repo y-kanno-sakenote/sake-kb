@@ -8,7 +8,7 @@ import kbdb
 
 MANIFEST = os.path.join(kbdb.ROOT, "data", "manifest_books.json")
 CHUNK_MAX = 800
-BOOK_TYPES = {"教科書", "試験問題"}
+BOOK_TYPES = {"教科書", "試験問題", "行政資料"}   # PDF を頁単位で抽出する種別（学会誌は ingest_papers.py）
 
 NA = r"[^\x00-\x7f]"            # 非ASCII（日本語）
 RE_SP_NA_NA = re.compile(rf"(?<={NA})[^\S\n]+(?={NA})")

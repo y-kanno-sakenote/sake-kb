@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-02T11:23:39",
+ "generated_at": "2026-09-02T11:38:55",
  "chunk_max": 800,
  "files": [
   {
@@ -145,7 +145,287 @@
    "md5": "3d0cad208e939012f9adc412da82cfa4",
    "pages": 10,
    "chars": 4476
+  },
+  {
+   "source_id": "nta-seishu-chosa-2005",
+   "part": "00",
+   "path": "読み物/日本酒資料/★清酒製造業の健全な発展に向けた調査研究/00.pdf",
+   "md5": "aeee69d0e152d2de3c57b680ae241c2c",
+   "pages": 9,
+   "chars": 6104
+  },
+  {
+   "source_id": "nta-seishu-chosa-2005",
+   "part": "01",
+   "path": "読み物/日本酒資料/★清酒製造業の健全な発展に向けた調査研究/01.pdf",
+   "md5": "d5484ac211c265f8e55b272efe69acac",
+   "pages": 1,
+   "chars": 508
+  },
+  {
+   "source_id": "nta-seishu-chosa-2005",
+   "part": "02",
+   "path": "読み物/日本酒資料/★清酒製造業の健全な発展に向けた調査研究/02.pdf",
+   "md5": "a89f81324119d32cc402848427767ed8",
+   "pages": 4,
+   "chars": 4064
+  },
+  {
+   "source_id": "nta-seishu-chosa-2005",
+   "part": "03",
+   "path": "読み物/日本酒資料/★清酒製造業の健全な発展に向けた調査研究/03.pdf",
+   "md5": "3d66e7d1b9fcb8842edbe8796693ec12",
+   "pages": 5,
+   "chars": 4924
+  },
+  {
+   "source_id": "nta-seishu-chosa-2005",
+   "part": "04",
+   "path": "読み物/日本酒資料/★清酒製造業の健全な発展に向けた調査研究/04.pdf",
+   "md5": "698a245be07831be57a5aad311216b4e",
+   "pages": 7,
+   "chars": 5749
+  },
+  {
+   "source_id": "nta-seishu-chosa-2005",
+   "part": "05",
+   "path": "読み物/日本酒資料/★清酒製造業の健全な発展に向けた調査研究/05.pdf",
+   "md5": "7dfb1d0f2c2c804a1f8524cc631f73d1",
+   "pages": 3,
+   "chars": 2009
+  },
+  {
+   "source_id": "nta-seishu-chosa-2005",
+   "part": "06",
+   "path": "読み物/日本酒資料/★清酒製造業の健全な発展に向けた調査研究/06.pdf",
+   "md5": "1a06041adddcb8b559c20649090cff10",
+   "pages": 2,
+   "chars": 1296
+  },
+  {
+   "source_id": "nta-seishu-chosa-2005",
+   "part": "07",
+   "path": "読み物/日本酒資料/★清酒製造業の健全な発展に向けた調査研究/07.pdf",
+   "md5": "59770146eedc21aa56a17adbf7e9e8d4",
+   "pages": 4,
+   "chars": 3853
+  },
+  {
+   "source_id": "nta-seishu-chosa-2005",
+   "part": "08",
+   "path": "読み物/日本酒資料/★清酒製造業の健全な発展に向けた調査研究/08.pdf",
+   "md5": "8f6c9c363a22f4cac6744a79f5901562",
+   "pages": 9,
+   "chars": 7881
+  },
+  {
+   "source_id": "nta-seishu-chosa-2005",
+   "part": "09",
+   "path": "読み物/日本酒資料/★清酒製造業の健全な発展に向けた調査研究/09.pdf",
+   "md5": "9a0adfcd4e3097a2b304fa95f58315a7",
+   "pages": 5,
+   "chars": 4969
+  },
+  {
+   "source_id": "nta-seishu-chosa-2005",
+   "part": "10",
+   "path": "読み物/日本酒資料/★清酒製造業の健全な発展に向けた調査研究/10.pdf",
+   "md5": "f45e920467c7403e98611550d95a5b61",
+   "pages": 6,
+   "chars": 6068
+  },
+  {
+   "source_id": "nta-seishu-chosa-2005",
+   "part": "11",
+   "path": "読み物/日本酒資料/★清酒製造業の健全な発展に向けた調査研究/11.pdf",
+   "md5": "e0142c0dc5b5e26ef289427ac98afef8",
+   "pages": 16,
+   "chars": 14796
+  },
+  {
+   "source_id": "nta-seishu-chosa-2005",
+   "part": "12",
+   "path": "読み物/日本酒資料/★清酒製造業の健全な発展に向けた調査研究/12.pdf",
+   "md5": "3cdcb007048fa056f3aeb378a6fd4fbf",
+   "pages": 13,
+   "chars": 11426
+  },
+  {
+   "source_id": "nta-seishu-chosa-2005",
+   "part": "13",
+   "path": "読み物/日本酒資料/★清酒製造業の健全な発展に向けた調査研究/13.pdf",
+   "md5": "ba1adc30e64b769b4ef60016d6a912ad",
+   "pages": 14,
+   "chars": 12988
+  },
+  {
+   "source_id": "nta-seishu-chosa-2005",
+   "part": "14",
+   "path": "読み物/日本酒資料/★清酒製造業の健全な発展に向けた調査研究/14.pdf",
+   "md5": "f56ee4076219fccf636fb85e0848348a",
+   "pages": 12,
+   "chars": 11627
+  },
+  {
+   "source_id": "nta-seishu-chosa-2005",
+   "part": "15",
+   "path": "読み物/日本酒資料/★清酒製造業の健全な発展に向けた調査研究/15.pdf",
+   "md5": "c4e79905beb4afaaf106e9121907a50a",
+   "pages": 5,
+   "chars": 4670
+  },
+  {
+   "source_id": "nta-seishu-chosa-2005",
+   "part": "16",
+   "path": "読み物/日本酒資料/★清酒製造業の健全な発展に向けた調査研究/16.pdf",
+   "md5": "f47d9857da19af7295a20208b1818ed0",
+   "pages": 7,
+   "chars": 6907
+  },
+  {
+   "source_id": "nta-seishu-chosa-2005",
+   "part": "17",
+   "path": "読み物/日本酒資料/★清酒製造業の健全な発展に向けた調査研究/17.pdf",
+   "md5": "8d641fa528809bca0c7f8bc88729b7e6",
+   "pages": 1,
+   "chars": 997
+  },
+  {
+   "source_id": "nta-seishu-chosa-2005",
+   "part": "18",
+   "path": "読み物/日本酒資料/★清酒製造業の健全な発展に向けた調査研究/18.pdf",
+   "md5": "7c006fcc67fb0da2caa01d6f628701b8",
+   "pages": 1,
+   "chars": 229
+  },
+  {
+   "source_id": "nta-seishu-chosa-2005",
+   "part": "19",
+   "path": "読み物/日本酒資料/★清酒製造業の健全な発展に向けた調査研究/19.pdf",
+   "md5": "590c081e154cd71a4e38a6162bbca62d",
+   "pages": 1,
+   "chars": 965
+  },
+  {
+   "source_id": "nta-seishu-chosa-2005",
+   "part": "20",
+   "path": "読み物/日本酒資料/★清酒製造業の健全な発展に向けた調査研究/20.pdf",
+   "md5": "1914ff9ab37d37f7da3a777f344ea045",
+   "pages": 4,
+   "chars": 1698
+  },
+  {
+   "source_id": "nta-seishu-chosa-2005",
+   "part": "21",
+   "path": "読み物/日本酒資料/★清酒製造業の健全な発展に向けた調査研究/21.pdf",
+   "md5": "174b9530958c566495fe8476e8d3ccd0",
+   "pages": 8,
+   "chars": 5869
+  },
+  {
+   "source_id": "nta-seishu-chosa-2005",
+   "part": "22",
+   "path": "読み物/日本酒資料/★清酒製造業の健全な発展に向けた調査研究/22.pdf",
+   "md5": "8d8b43ef58ad27d5b573052d603893b9",
+   "pages": 1,
+   "chars": 281
+  },
+  {
+   "source_id": "nta-seishu-chosa-2005",
+   "part": "23",
+   "path": "読み物/日本酒資料/★清酒製造業の健全な発展に向けた調査研究/23.pdf",
+   "md5": "eb7a989cd74c303218273f9058c9cccb",
+   "pages": 42,
+   "chars": 19608
+  },
+  {
+   "source_id": "nta-seishu-chosa-2005",
+   "part": "24",
+   "path": "読み物/日本酒資料/★清酒製造業の健全な発展に向けた調査研究/24.pdf",
+   "md5": "ff71813379104059c03b5babe3cc3f6c",
+   "pages": 4,
+   "chars": 2936
+  },
+  {
+   "source_id": "nta-seishu-chosa-2005",
+   "part": "25",
+   "path": "読み物/日本酒資料/★清酒製造業の健全な発展に向けた調査研究/25.pdf",
+   "md5": "d753db6df18647133aa852882c692c72",
+   "pages": 9,
+   "chars": 11207
+  },
+  {
+   "source_id": "nta-seishu-chosa-2005",
+   "part": "26",
+   "path": "読み物/日本酒資料/★清酒製造業の健全な発展に向けた調査研究/26.pdf",
+   "md5": "451899bf06df96689e50183c339b489a",
+   "pages": 16,
+   "chars": 13869
+  },
+  {
+   "source_id": "nta-seishu-chosa-2005",
+   "part": "27",
+   "path": "読み物/日本酒資料/★清酒製造業の健全な発展に向けた調査研究/27.pdf",
+   "md5": "180aeb4f3a7f28eb3b26cc6de2eff94c",
+   "pages": 30,
+   "chars": 22145
+  },
+  {
+   "source_id": "nta-seishu-chosa-2005",
+   "part": "28",
+   "path": "読み物/日本酒資料/★清酒製造業の健全な発展に向けた調査研究/28.pdf",
+   "md5": "dcf28addbd4fce819588e83eb70db2bb",
+   "pages": 4,
+   "chars": 5452
+  },
+  {
+   "source_id": "nta-actionplan-2000",
+   "part": "01.",
+   "path": "読み物/日本酒資料/★中小酒類業の活性化のためのアクション・プラン/01..pdf",
+   "md5": "48ec47d78a9a346ee41f928f9258a09f",
+   "pages": 34,
+   "chars": 28696
+  },
+  {
+   "source_id": "nta-actionplan-2000",
+   "part": "02",
+   "path": "読み物/日本酒資料/★中小酒類業の活性化のためのアクション・プラン/02.pdf",
+   "md5": "26b60623ddfc6359ba256eacb508e709",
+   "pages": 31,
+   "chars": 24934
+  },
+  {
+   "source_id": "nta-actionplan-2000",
+   "part": "03",
+   "path": "読み物/日本酒資料/★中小酒類業の活性化のためのアクション・プラン/03.pdf",
+   "md5": "fee34d735d22cf9164fbd39f0422e20a",
+   "pages": 41,
+   "chars": 34938
+  },
+  {
+   "source_id": "nta-keiei-kaizen-2004",
+   "part": "★keieiKaizenManual_1",
+   "path": "読み物/日本酒資料/★keieiKaizenManual_1.pdf",
+   "md5": "e18f19ee4877e4fd19607d9621d24a47",
+   "pages": 30,
+   "chars": 47114
+  },
+  {
+   "source_id": "nta-keiei-kaizen-2004",
+   "part": "★keieiKaizenManual_2",
+   "path": "読み物/日本酒資料/★keieiKaizenManual_2.pdf",
+   "md5": "ec27e54f9a69caa1b5b75355c2573a60",
+   "pages": 32,
+   "chars": 50537
+  },
+  {
+   "source_id": "nta-koujikin-2021",
+   "part": "日本の伝統的なこうじ菌を使った酒造り",
+   "path": "読み物/日本酒資料/日本の伝統的なこうじ菌を使った酒造り.pdf",
+   "md5": "e7cf7f55320553eb872da1b58ee37f19",
+   "pages": 153,
+   "chars": 138215
   }
  ],
- "elapsed_sec": 2.9
+ "elapsed_sec": 7.7
 }
