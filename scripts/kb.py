@@ -40,6 +40,8 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser(); ap.add_argument("query"); ap.add_argument("-k", type=int, default=5)
     ap.add_argument("--source"); ap.add_argument("--full", action="store_true")
     a = ap.parse_args()
-    for r in search(a.query, a.k, a.source):
+    hits = search(a.query, a.k, a.source)
+    if not hits: print("0件")
+    for r in hits:
         body = r["text"] if a.full else r["text"][:160].replace("\n", " ") + ("…" if len(r["text"]) > 160 else "")
         print(f"[{cite(r)}] ({r['chunk_id']})\n  {body}\n")
