@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-02T09:48:50",
+ "generated_at": "2026-09-02T11:22:57",
  "chunk_max": 800,
  "files": [
   {
@@ -147,5 +147,5 @@
    "chars": 4476
   }
  ],
- "elapsed_sec": 2.2
+ "elapsed_sec": 3.2
 }
