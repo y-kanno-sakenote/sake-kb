@@ -1,0 +1,151 @@
+{
+ "generated_at": "2026-09-02T09:36:52",
+ "chunk_max": 800,
+ "files": [
+  {
+   "source_id": "akahon",
+   "part": "清酒製造技術",
+   "path": "読み物/日本酒資料/自炊本/清酒製造技術（赤本）/清酒製造技術.pdf",
+   "md5": "69dae21feabd4afb349624c39229b348",
+   "pages": 520,
+   "chars": 375869
+  },
+  {
+   "source_id": "aohon",
+   "part": "酒造講本",
+   "path": "読み物/日本酒資料/自炊本/酒造購本（青本）/酒造講本.pdf",
+   "md5": "2c2a5398d8267065c7ad9f3439b17ce8",
+   "pages": 334,
+   "chars": 224474
+  },
+  {
+   "source_id": "nihonshu-no-moto",
+   "part": "0.はじめに",
+   "path": "読み物/日本酒資料/自炊本/日本酒の基/0.はじめに.pdf",
+   "md5": "9d971183877218aa09009437088ace2b",
+   "pages": 22,
+   "chars": 19827
+  },
+  {
+   "source_id": "nihonshu-no-moto",
+   "part": "1.原料",
+   "path": "読み物/日本酒資料/自炊本/日本酒の基/1.原料.pdf",
+   "md5": "aa14db4472315fcb7660a48423eb8bf3",
+   "pages": 36,
+   "chars": 34288
+  },
+  {
+   "source_id": "nihonshu-no-moto",
+   "part": "2.製法",
+   "path": "読み物/日本酒資料/自炊本/日本酒の基/2.製法.pdf",
+   "md5": "104648b5d5a4cd43bfdf854179c1fec4",
+   "pages": 46,
+   "chars": 32892
+  },
+  {
+   "source_id": "nihonshu-no-moto",
+   "part": "3.表示",
+   "path": "読み物/日本酒資料/自炊本/日本酒の基/3.表示.pdf",
+   "md5": "5f71501d948ad1de422569441e381892",
+   "pages": 20,
+   "chars": 18372
+  },
+  {
+   "source_id": "nihonshu-no-moto",
+   "part": "4.歴史",
+   "path": "読み物/日本酒資料/自炊本/日本酒の基/4.歴史.pdf",
+   "md5": "91b3ffbcabe10159a2c98a8c5af50844",
+   "pages": 28,
+   "chars": 32240
+  },
+  {
+   "source_id": "nihonshu-no-moto",
+   "part": "5.香味特性別分類",
+   "path": "読み物/日本酒資料/自炊本/日本酒の基/5.香味特性別分類.pdf",
+   "md5": "bec2e22e9e7a4071ad12e30d32bc7834",
+   "pages": 6,
+   "chars": 4934
+  },
+  {
+   "source_id": "nihonshu-no-moto",
+   "part": "6.テイスティング",
+   "path": "読み物/日本酒資料/自炊本/日本酒の基/6.テイスティング.pdf",
+   "md5": "7e3ddc7bd30585fdff1fb9fdff6200d5",
+   "pages": 28,
+   "chars": 23971
+  },
+  {
+   "source_id": "nihonshu-no-moto",
+   "part": "7.サービス",
+   "path": "読み物/日本酒資料/自炊本/日本酒の基/7.サービス.pdf",
+   "md5": "ace47ed0368d5d3ab79d6fb318ad2c4d",
+   "pages": 62,
+   "chars": 57703
+  },
+  {
+   "source_id": "nihonshu-no-moto",
+   "part": "8.セールスプロモーション",
+   "path": "読み物/日本酒資料/自炊本/日本酒の基/8.セールスプロモーション.pdf",
+   "md5": "10b8836937b417cbaed537ad74287558",
+   "pages": 52,
+   "chars": 53126
+  },
+  {
+   "source_id": "kanno-hyokashi",
+   "part": "官能評価士認定テキスト",
+   "path": "読み物/日本酒資料/自炊本/官能評価士テキスト/官能評価士認定テキスト.pdf",
+   "md5": "598c229a7ae75221de03d8b2cb9859d4",
+   "pages": 242,
+   "chars": 171928
+  },
+  {
+   "source_id": "ginou-kentei",
+   "part": "1級_R4",
+   "path": "読み物/日本酒資料/自炊本/酒造技能者/1級_R4.pdf",
+   "md5": "a9c68c2a6befab0419c44308f129dcc4",
+   "pages": 10,
+   "chars": 5198
+  },
+  {
+   "source_id": "ginou-kentei",
+   "part": "1級_R5",
+   "path": "読み物/日本酒資料/自炊本/酒造技能者/1級_R5.pdf",
+   "md5": "3b909f56a7397dd52ca6202aa8acb6d5",
+   "pages": 10,
+   "chars": 5467
+  },
+  {
+   "source_id": "ginou-kentei",
+   "part": "1級_R6",
+   "path": "読み物/日本酒資料/自炊本/酒造技能者/1級_R6.pdf",
+   "md5": "1e937844b15ec772f7b275d64c2b87cf",
+   "pages": 10,
+   "chars": 5056
+  },
+  {
+   "source_id": "ginou-kentei",
+   "part": "2級_R4",
+   "path": "読み物/日本酒資料/自炊本/酒造技能者/2級_R4.pdf",
+   "md5": "6c74539597a44c14bfb473613c4885c5",
+   "pages": 10,
+   "chars": 4336
+  },
+  {
+   "source_id": "ginou-kentei",
+   "part": "2級_R5",
+   "path": "読み物/日本酒資料/自炊本/酒造技能者/2級_R5.pdf",
+   "md5": "0f38668c1dfa59b6f7d9e45431f93dc6",
+   "pages": 10,
+   "chars": 4530
+  },
+  {
+   "source_id": "ginou-kentei",
+   "part": "2級_R6",
+   "path": "読み物/日本酒資料/自炊本/酒造技能者/2級_R6.pdf",
+   "md5": "3d0cad208e939012f9adc412da82cfa4",
+   "pages": 10,
+   "chars": 4476
+  }
+ ],
+ "elapsed_sec": 2.1
+}
