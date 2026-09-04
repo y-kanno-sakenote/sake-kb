@@ -27,9 +27,9 @@
 | nta-* | 国税庁資料6件（調査研究2005・アクションプラン2000・経営改善2004・こうじ菌2021・概況R7・酒のしおりR8 Excel数表） | PDF頁／Excelシート | 約1,250 |
 | hyakka-hakko | 47都道府県・発酵文化百科（2021・丸善出版）の**頁つき構造化事実**4,987件（逐語ではない） | 書籍頁 | 約460 |
 | hyakka-dentoshoku | 47都道府県・伝統食百科（2009・丸善）の頁つき構造化事実 6,173件 | 書籍頁 | 約570 |
-| hyakka-chomiryo | 47都道府県・伝統調味料百科（丸善・発行年は奥付未スキャンで要確認）の頁つき構造化事実 4,154件 | 書籍頁 | 約400 |
+| hyakka-chomiryo | 47都道府県・伝統調味料百科（丸善出版 2013）の頁つき構造化事実 4,154件 | 書籍頁 | 約400 |
 
-再生成: `../jbsj/.venv/bin/python scripts/export_jbsj_corpus.py && python3 scripts/extract_books.py && python3 scripts/ingest_papers.py`（export 約10秒・本 約2秒・論文は元PDF 4,278本を8並列で約13分、DB約720MB）。旧誌（日本釀造協會雜誌 2,162本）・他誌論文は次段。
+再生成: `../jbsj/.venv/bin/python scripts/export_jbsj_corpus.py && python3 scripts/extract_books.py && python3 scripts/ingest_papers.py`（export 約10秒・本 約2秒・論文は元PDF 4,278本を8並列で約13分、DB約720MB）。旧誌（日本釀造協會雜誌 2,162本）は**取り込み停止中**（2026-09-04 オーナー判断：Drive 側の整理が先。可読性・出典付与は docs/backlog_2026-09-03.md で確認済み、パイロット data/pilot_kyushi.sqlite）。他誌論文は所在未確認。
 
 ## 既知の癖（実測済み）
 - 自炊本5冊のみ OCRの固定誤字を補正: 疏→酛、膠→醪（本5冊には誤読以外の用例なし）。論文は正字を持ち疏水・膠原線維などがあるので補正しない。他の誤字は未補正
