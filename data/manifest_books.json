@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-05T14:03:49",
+ "generated_at": "2026-09-05T15:08:38",
  "chunk_max": 800,
  "files": [
   {
@@ -697,7 +697,39 @@
    "md5": "9e5c7482037122e239b40d3524557b37",
    "pages": 1,
    "chars": 373
+  },
+  {
+   "source_id": "nrib-kouen44-koji",
+   "part": "第44回講演会要旨_麹の品質は予測できるか",
+   "path": "読み物/日本酒資料/NRIB_清酒製造支援DB/第44回講演会要旨_麹の品質は予測できるか.pdf",
+   "md5": "b6b1c21f35d90807d9078eeb74a749f3",
+   "pages": 2,
+   "chars": 2713
+  },
+  {
+   "source_id": "nrib-kouen46-sulfate",
+   "part": "第46回講演会要旨_硫酸塩添加によるアミノ酸度低減",
+   "path": "読み物/日本酒資料/NRIB_清酒製造支援DB/第46回講演会要旨_硫酸塩添加によるアミノ酸度低減.pdf",
+   "md5": "557979295b229cadec4845a683a38a86",
+   "pages": 2,
+   "chars": 2522
+  },
+  {
+   "source_id": "nrib-patent-2010-98996",
+   "part": "公開特許公報_特開2010-98996_麹の製造方法",
+   "path": "読み物/日本酒資料/NRIB_清酒製造支援DB/公開特許公報_特開2010-98996_麹の製造方法.pdf",
+   "md5": "edc69b2ef51c67d0cf601570fb98df72",
+   "pages": 10,
+   "chars": 12002
+  },
+  {
+   "source_id": "nrib-db-kaisetsu",
+   "part": "清酒製造支援DB_解説文",
+   "path": "読み物/日本酒資料/NRIB_清酒製造支援DB/清酒製造支援DB_解説文.txt",
+   "md5": "b301366bac74db8b951257069aa814b1",
+   "pages": 1,
+   "chars": 4818
   }
  ],
- "elapsed_sec": 6.0
+ "elapsed_sec": 8.3
 }
