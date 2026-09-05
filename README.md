@@ -44,5 +44,7 @@
 - 表示基準・法令の .txt は全角スペースが正規化で消える（例「七　清酒　次に掲げる…」→「七清酒次に掲げる…」）。検索・引用には支障ないが、逐語で写すときは Drive の `表示基準_酒税法/原本/`（取得元HTML・e-Gov JSON）を見る
 - 酒のしおりの PDF（令和3〜8年版）は埋め込みフォントの ToUnicode 欠落で全頁文字化け。数表は Excel から取る
 
+- 既知の癖（2026-09-05 検証係）: `.txt` 入力は数表用に「頁1行目を全チャンクに前置」するため、告示本文・概要は全チャンクが「清酒」「表示基準」で当たる（ソース内ノイズ。`--source` なしの検索では bm25 で薄まる）。
+
 ## 裏取りを係に頼むとき
 `docs/verification_prompt.md` の5条（原文引用・逆接保持・矛盾の定義・機械集計・出典形式）を委任文に貼る。流れは 検証表 → qa係の抜き取り → 本体訂正 → 反映はオーナー判断。前例: `dev/kamoshite_pon/docs/prefecture_verification.md`、`dev/seishu-musou/docs/sim_constants_verification.md`。
