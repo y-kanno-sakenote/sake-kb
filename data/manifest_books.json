@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-02T12:20:35",
+ "generated_at": "2026-09-05T14:03:49",
  "chunk_max": 800,
  "files": [
   {
@@ -665,7 +665,39 @@
    "md5": "76f9173c4be187ac6527fabdfd99a170",
    "pages": 1,
    "chars": 4134
+  },
+  {
+   "source_id": "nta-hyoji-kijun",
+   "part": "告示本文",
+   "path": "読み物/日本酒資料/国税庁_最新/表示基準_酒税法/清酒の製法品質表示基準/告示本文.txt",
+   "md5": "309f7fe2e9be114504f3dad411e3e123",
+   "pages": 1,
+   "chars": 4882
+  },
+  {
+   "source_id": "nta-hyoji-kijun",
+   "part": "概要",
+   "path": "読み物/日本酒資料/国税庁_最新/表示基準_酒税法/清酒の製法品質表示基準/概要.txt",
+   "md5": "9eee0f37a504a57a74475bd0a3e8484e",
+   "pages": 1,
+   "chars": 5078
+  },
+  {
+   "source_id": "shuzeiho",
+   "part": "酒税法_第1条-第3条",
+   "path": "読み物/日本酒資料/国税庁_最新/表示基準_酒税法/酒税法/酒税法_第1条-第3条.txt",
+   "md5": "e38fa16991d2dc85d1565c337cd41730",
+   "pages": 1,
+   "chars": 5500
+  },
+  {
+   "source_id": "shuzeiho-sekourei",
+   "part": "酒税法施行令_第2条",
+   "path": "読み物/日本酒資料/国税庁_最新/表示基準_酒税法/酒税法施行令/酒税法施行令_第2条.txt",
+   "md5": "9e5c7482037122e239b40d3524557b37",
+   "pages": 1,
+   "chars": 373
   }
  ],
- "elapsed_sec": 5.1
+ "elapsed_sec": 6.0
 }
