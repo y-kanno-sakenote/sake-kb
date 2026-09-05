@@ -7,6 +7,14 @@ COLS = ["chunk_id", "source_id", "title", "part", "pdf_page", "text", "score", "
 SEL = """c.chunk_id, c.source_id, s.title, c.part, c.pdf_page, c.text, {score},
          d.title, d.authors, d.year, d.vol, d.no, d.page_start, d.page_end, d.url, d.page_ok"""
 
+# 異体字の展開：DB は原文どおり（麴＝旧字を使う論文・資料が約560チャンク）なので、検索側で両方を引く
+VARIANTS = {"麹": "麴", "麴": "麹"}
+def variants(t: str):
+    out = {t}
+    for a, b in VARIANTS.items():
+        if a in t: out.add(t.replace(a, b))
+    return sorted(out)
+
 def search(query: str, k=5, source=None, db=DB):
     terms = [t for t in query.split() if t]
     if not terms: return []
@@ -15,15 +23,16 @@ def search(query: str, k=5, source=None, db=DB):
     joins = "JOIN sources s ON s.source_id=c.source_id LEFT JOIN docs d ON d.source_id=c.source_id AND d.part=c.part"
     if long_t:
         base = f"SELECT {SEL.format(score='bm25(chunks_fts)')} FROM chunks_fts JOIN chunks c ON c.id=chunks_fts.rowid {joins} WHERE chunks_fts MATCH ?"
-        args.append(" AND ".join('"' + t.replace('"', '""') + '"' for t in long_t))
+        args.append(" AND ".join("(" + " OR ".join('"' + v.replace('"', '""') + '"' for v in variants(t)) + ")" for t in long_t))
     else:
         base = f"SELECT {SEL.format(score='0.0')} FROM chunks c {joins} WHERE 1=1"
-    for t in short_t: where.append("c.text LIKE ?"); args.append(f"%{t}%")
+    for t in short_t:
+        vs = variants(t); where.append("(" + " OR ".join("c.text LIKE ?" for _ in vs) + ")"); args.extend(f"%{v}%" for v in vs)
     if source: where.append("c.source_id = ?"); args.append(source)
     rows = [dict(zip(COLS, r)) for r in con.execute(base + "".join(" AND " + w for w in where), args)]
     con.close()
     if not long_t:
-        for r in rows: r["score"] = -sum(r["text"].count(t) for t in short_t)
+        for r in rows: r["score"] = -sum(r["text"].count(v) for t in short_t for v in variants(t))
     rows.sort(key=lambda r: r["score"])
     return rows[:k]
 
