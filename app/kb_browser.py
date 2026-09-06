@@ -43,15 +43,13 @@ sources, counts = load_sources()
 
 with st.sidebar:
     st.header("出典台帳")
+    # 幅の狭いサイドバーで読める3列だけ（tier は全件 T1、type/year は台帳 CSV で足りる）
     st.dataframe(
         [
             {
-                "source_id": s["source_id"],
-                "title": s["title"],
-                "tier": s["tier"],
-                "type": s["type"],
-                "year": s["year"],
-                "チャンク": counts.get(s["source_id"], 0),
+                "ID": s["source_id"],
+                "資料": s["title"],
+                "段落": counts.get(s["source_id"], 0),
             }
             for s in sources
         ],
@@ -61,16 +59,17 @@ with st.sidebar:
 
 st.title("🍶 sake-kb 検索")
 
-query = st.text_input("検索語（スペース区切りで AND）", "")
+query = st.text_input("検索語", "", placeholder="例: 麹 品温（スペースで区切ると絞り込み）")
 c1, c2 = st.columns([1, 4])
 with c1:
     k = st.number_input("件数", min_value=1, max_value=100, value=10, step=1)
 with c2:
-    labels = {s["source_id"]: f"{s['source_id']} — {s['title']}" for s in sources}
+    labels = {s["source_id"]: s["title"] for s in sources}
     picked = st.multiselect(
-        "出典で絞る（空なら全て）",
+        "出典",
         options=list(labels),
         format_func=lambda sid: labels.get(sid, sid),
+        placeholder="全て",
     )
 
 if query.strip():
@@ -84,13 +83,11 @@ if query.strip():
         hits = kb.search(query, int(k))
 
     terms = [t for t in query.split() if t]
-    if not hits:
-        st.write("0件")
-    else:
-        st.caption(f"{len(hits)}件")
+    st.caption(f"{len(hits)}件")
+    if hits:
         for r in hits:
             st.markdown(f"**{kb.cite(r)}**")
             st.write(excerpt(r, terms))
-            with st.expander("全文を見る"):
+            with st.expander("全文"):
                 st.text(r["text"])
             st.divider()
