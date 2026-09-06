@@ -15,6 +15,10 @@
 
 依存: Python 標準ライブラリのみ ＋ poppler（`pdftotext`, `pdfinfo`）。
 
+## 手元で見る
+`../jbsj/.venv/bin/streamlit run app/kb_browser.py --server.port 8530`（検索・出典表記は `scripts/kb.py` のまま。依存は streamlit のみ）
+ローカル専用。自炊本の全文と転載禁止の百科事実を含むので公開・共有はしない。
+
 ## 頁番号について
 本: `pdf_page` は PDF 内の通し頁（1始まり）で印刷頁とは一致しない。引用は「source_id / part / pdf_page」。
 論文: 引用は「誌名 巻(号) 年 pp.範囲 p.印刷頁 著者「題名」」。page_ok=0 の論文は頁なし。
