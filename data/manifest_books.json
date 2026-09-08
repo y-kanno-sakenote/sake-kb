@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-05T15:08:38",
+ "generated_at": "2026-09-08T12:21:18",
  "chunk_max": 800,
  "files": [
   {
@@ -729,7 +729,111 @@
    "md5": "b301366bac74db8b951257069aa814b1",
    "pages": 1,
    "chars": 4818
+  },
+  {
+   "source_id": "shoyu-center-toukei-2024",
+   "part": "01_目次",
+   "path": "読み物/日本酒資料/しょうゆ情報センター_醤油統計2024/excel_text/01_目次.txt",
+   "md5": "2cdec7a94e1ac79f17a396b6e7acf29c",
+   "pages": 1,
+   "chars": 438
+  },
+  {
+   "source_id": "shoyu-center-toukei-2024",
+   "part": "02_1.企業_工場_数の推移",
+   "path": "読み物/日本酒資料/しょうゆ情報センター_醤油統計2024/excel_text/02_1.企業_工場_数の推移.txt",
+   "md5": "9cad7abc4fb0ad4d4eb88029a8920197",
+   "pages": 1,
+   "chars": 2091
+  },
+  {
+   "source_id": "shoyu-center-toukei-2024",
+   "part": "03_2._1_出荷数量の推移",
+   "path": "読み物/日本酒資料/しょうゆ情報センター_醤油統計2024/excel_text/03_2._1_出荷数量の推移.txt",
+   "md5": "64dfaea470bd3aac63363690dc36a23f",
+   "pages": 1,
+   "chars": 8741
+  },
+  {
+   "source_id": "shoyu-center-toukei-2024",
+   "part": "04_2._2_都道府県別しょうゆ等出荷数量",
+   "path": "読み物/日本酒資料/しょうゆ情報センター_醤油統計2024/excel_text/04_2._2_都道府県別しょうゆ等出荷数量.txt",
+   "md5": "6f59ff53e8185b729d60e2fd9ccb94c1",
+   "pages": 1,
+   "chars": 4163
+  },
+  {
+   "source_id": "shoyu-center-toukei-2024",
+   "part": "05_2._3_都道府県別種類別出荷数量",
+   "path": "読み物/日本酒資料/しょうゆ情報センター_醤油統計2024/excel_text/05_2._3_都道府県別種類別出荷数量.txt",
+   "md5": "0107c39f6ab87a09e00876e8b92aeeb6",
+   "pages": 1,
+   "chars": 2335
+  },
+  {
+   "source_id": "shoyu-center-toukei-2024",
+   "part": "06_2._4_都道府県別製造方法別出荷数量",
+   "path": "読み物/日本酒資料/しょうゆ情報センター_醤油統計2024/excel_text/06_2._4_都道府県別製造方法別出荷数量.txt",
+   "md5": "7f3aab79df829188685e2ed9ae4ccd80",
+   "pages": 1,
+   "chars": 1788
+  },
+  {
+   "source_id": "shoyu-center-toukei-2024",
+   "part": "07_2._5_容器別出荷数量の推移_A4-P2_",
+   "path": "読み物/日本酒資料/しょうゆ情報センター_醤油統計2024/excel_text/07_2._5_容器別出荷数量の推移_A4-P2_.txt",
+   "md5": "99141e1f55378e4e2e8a37e88dd15cf2",
+   "pages": 1,
+   "chars": 13869
+  },
+  {
+   "source_id": "shoyu-center-toukei-2024",
+   "part": "08_2._6_輸出数量の推移_A4-P2_",
+   "path": "読み物/日本酒資料/しょうゆ情報センター_醤油統計2024/excel_text/08_2._6_輸出数量の推移_A4-P2_.txt",
+   "md5": "dbdbe8e64d0266c523ab9b2d46232f46",
+   "pages": 1,
+   "chars": 16808
+  },
+  {
+   "source_id": "shoyu-center-toukei-2024",
+   "part": "09_3._1_原料使用量の推移",
+   "path": "読み物/日本酒資料/しょうゆ情報センター_醤油統計2024/excel_text/09_3._1_原料使用量の推移.txt",
+   "md5": "89a4a0f8c6eaf12d76640e73bacbffca",
+   "pages": 1,
+   "chars": 6207
+  },
+  {
+   "source_id": "shoyu-center-toukei-2024",
+   "part": "10_4.一世帯当たり年間購入数量・支出金額の推移",
+   "path": "読み物/日本酒資料/しょうゆ情報センター_醤油統計2024/excel_text/10_4.一世帯当たり年間購入数量・支出金額の推移.txt",
+   "md5": "15a11c718ac422a638fdf8c4d37c834c",
+   "pages": 1,
+   "chars": 4036
+  },
+  {
+   "source_id": "shoyu-center-toukei-2024",
+   "part": "11_5.しょうゆJAS受検数量の推移",
+   "path": "読み物/日本酒資料/しょうゆ情報センター_醤油統計2024/excel_text/11_5.しょうゆJAS受検数量の推移.txt",
+   "md5": "d1c6d8dffb1bd76676bff3fff4e6e8aa",
+   "pages": 1,
+   "chars": 5535
+  },
+  {
+   "source_id": "zenmi-miso-shurui-2025",
+   "part": "みその種類別出荷数量_2000-2025",
+   "path": "読み物/日本酒資料/全味工連_みそ統計2025/text/みその種類別出荷数量_2000-2025.txt",
+   "md5": "b2e357b8dc5534951bb31ef78979975e",
+   "pages": 1,
+   "chars": 2637
+  },
+  {
+   "source_id": "nta-shihanshu-h29",
+   "part": "全国市販酒類調査_平成29年度",
+   "path": "読み物/日本酒資料/国税庁_最新/全国市販酒類調査_平成29年度/text/全国市販酒類調査_平成29年度.txt",
+   "md5": "8c582748d797f1e5fe6a178bd325c4ee",
+   "pages": 1,
+   "chars": 28234
   }
  ],
- "elapsed_sec": 8.3
+ "elapsed_sec": 0.2
 }

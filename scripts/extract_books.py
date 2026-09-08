@@ -85,11 +85,15 @@ def resolve_files(drive_path: str):
     # 原本/ と結合版 日本酒の基.pdf は除外
     return [f for f in files if "/原本/" not in f and os.path.basename(f) != "日本酒の基.pdf"]
 
-def build(db_path=kbdb.DB):
+def build(db_path=kbdb.DB, only=None):
+    """only=source_id の集合を渡すとその資料だけ再取り込みし、manifest は既存と併合する（全体再生成は13分）"""
     con = kbdb.connect(db_path)
     manifest = {"generated_at": datetime.now().isoformat(timespec="seconds"), "chunk_max": CHUNK_MAX, "files": []}
+    if only and os.path.exists(MANIFEST):
+        old = json.load(open(MANIFEST, encoding="utf-8"))
+        manifest["files"] = [f for f in old.get("files", []) if f["source_id"] not in only]
     t0 = time.time()
-    for s in [x for x in kbdb.read_sources() if x["type"] in BOOK_TYPES]:
+    for s in [x for x in kbdb.read_sources() if x["type"] in BOOK_TYPES and (not only or x["source_id"] in only)]:
         files = resolve_files(s["drive_path"])
         if not files: print(f"!! {s['source_id']}: ファイルなし {s['drive_path']}", file=sys.stderr); continue
         kbdb.clear_source(con, s["source_id"]); kbdb.upsert_source(con, s)
@@ -123,4 +127,4 @@ def build(db_path=kbdb.DB):
     print(f"done {manifest['elapsed_sec']}s -> {db_path}")
 
 if __name__ == "__main__":
-    build()
+    build(only=set(sys.argv[1:]) or None)
