@@ -50,6 +50,30 @@ for p in PREFS:
     lv=max([2 if a['verdict']=='裏取れた' else 1 for a in ama[p]],default=0)
     data[p]['amakuchi']={'level':lv,'refs':ama[p]}
 
+
+# 地域の調味料（百科3冊の「伝統食・調味料」行。企業・統計行を除き、名前に調味料語を含むものだけ。名前で重複除去）
+CAT=[('魚醤',r'魚醤|しょっつる|いしる|いしり|いかなご醤油|魚汁'),('味噌',r'味噌|みそ|ミソ'),('醤油',r'醤油|しょうゆ|正油|醤|ひしお|たまり'),('酢',r'酢'),('みりん・酒',r'みりん|味醂|料理酒|甘酒'),('塩',r'塩'),('たれ・つゆ・だし',r'たれ|タレ|つゆ|だし|出汁|ポン酢|ぽん酢')]
+import re as _re
+local={p:[] for p in PREFS}; seen=set()
+for l in open('data/exports/chomiryo_by_pref.jsonl'):
+    d=json.loads(l); p=short(d['prefecture'])
+    if d['type']!='伝統食・調味料' or p not in local: continue
+    if _re.search(r'株式会社|\(株\)|（株）|\(有\)|（有）|有限会社|商店|本店|醸造所|醸造元|購入量|統計|傾向|特徴|会社|醸造の|の商品|製造|保存食|加工品|製品',d['name']): continue
+    # qa 2026-09-21: 料理・加工品（塩焼き・塩辛・味噌汁・漬け 等）は調味料でないので落とす
+    if _re.search(r'汁|鍋|煮|焼|干|漬|蔵品|塩辛|塩引|あえ|和え|炒|揚|丼|飯|めし|餅|団子|ラーメン|そば|うどん|料理|巻|寿司|すし|刺身|蒲鉾|かまぼこ|弁当|菓子|煎餅|せんべい|饅頭|まんじゅう|茶漬',d['name']): continue
+    cat=next((c for c,rx in CAT if _re.search(rx,d['name'])),None)
+    if not cat: continue
+    key=(p,_re.sub(r'\s|「|」|（.*?）|\(.*?\)','',d['name']))
+    if key in seen: continue
+    seen.add(key)
+    src={'hyakka-chomiryo':'伝統調味料百科','hyakka-dentoshoku':'伝統食百科','hyakka-hakko':'発酵文化百科'}[d['source']]
+    local[p].append({'name':d['name'],'fact':d['fact'][:80],'cat':cat,'src':f"{src} p.{d['printed_page']}"})
+order={c:i for i,(c,_) in enumerate(CAT)}
+for p in PREFS:
+    local[p].sort(key=lambda x:(order[x['cat']],x['name']))
+    data[p]['local']=local[p]
+print('local:',sum(len(v) for v in local.values()),'件', 'min',min(len(v) for v in local.values()),'max',max(len(v) for v in local.values()))
+
 # 清酒の甘辛（全国市販酒類調査 平成29年度・一般酒・県別トリム平均）
 try:
     sj=json.load(open('data/exports/seishu_pref_h29.json'))['一般酒']
